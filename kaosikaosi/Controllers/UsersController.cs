@@ -60,6 +60,12 @@ public class UsersController : ApiController
         return SignIn(claimsPrincipal, CookieAuthenticationDefaults.AuthenticationScheme);
     }
 
+    [HttpPost("Logout"), LoggedInAuthorize]
+    public IActionResult Logout()
+    {
+        return SignOut();
+    }
+
     [HttpPost("IsLoggedIn"), LoggedInAuthorize]
     public async Task<IActionResult> IsLoggedIn()
     {
@@ -73,7 +79,8 @@ public class UsersController : ApiController
             {
                 Id = id,
                 Email = email,
-                Name = user.Name
+                Name = user.Name,
+                Profile = user.Profile
             });
         }
 

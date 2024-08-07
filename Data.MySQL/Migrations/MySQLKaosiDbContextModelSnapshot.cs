@@ -59,6 +59,10 @@ namespace Data.MySQL.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Profile")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -70,14 +74,15 @@ namespace Data.MySQL.Migrations
                         new
                         {
                             Id = new Guid("548312b6-a7ec-496b-ab7c-cc4c16060882"),
-                            CreatedDateTime = new DateTimeOffset(new DateTime(2024, 8, 1, 11, 50, 20, 696, DateTimeKind.Unspecified).AddTicks(2592), new TimeSpan(0, 8, 0, 0, 0)),
+                            CreatedDateTime = new DateTimeOffset(new DateTime(2024, 8, 7, 14, 54, 33, 432, DateTimeKind.Unspecified).AddTicks(7830), new TimeSpan(0, 8, 0, 0, 0)),
                             Email = "birenchens@163.com",
                             EmailUpperCase = "BIRENCHENS@163.COM",
                             Invitation = new Guid("00000000-0000-0000-0000-000000000000"),
-                            LastModifiedDateTime = new DateTimeOffset(new DateTime(2024, 8, 1, 11, 50, 20, 696, DateTimeKind.Unspecified).AddTicks(2620), new TimeSpan(0, 8, 0, 0, 0)),
+                            LastModifiedDateTime = new DateTimeOffset(new DateTime(2024, 8, 7, 14, 54, 33, 432, DateTimeKind.Unspecified).AddTicks(7856), new TimeSpan(0, 8, 0, 0, 0)),
                             Name = "Dvorak",
                             PhoneNumber = "WabGCtqzQ28RPTyhXNHEgw==",
                             PrivateKey = "eyIfyiYBz/ABY5QBSbSFOv/V2p8XR7URQ2h4smfgRXk=",
+                            Profile = "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
                             Status = 0
                         });
                 });

@@ -7,6 +7,7 @@ namespace Data.Entities
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = "";
+        public string Profile { get; set; } = "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp";
         public string PhoneNumber { get; set; } = "";
         public string Email { get; set; } = "";
         public string EmailUpperCase { get; set; } = "";

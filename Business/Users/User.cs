@@ -14,6 +14,7 @@ public class User(Data.Entities.User userModel, ICAPTCHACache captchaCache, ISen
     public Guid Id => userModel.Id;
     public string Email => userModel.Email;
     public string Name => userModel.Name;
+    public string Profile => userModel.Profile;
 
     public bool IsActivity => userModel.Status == Data.Entities.UserStatus.Activity;
 

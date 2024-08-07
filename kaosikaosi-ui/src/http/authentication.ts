@@ -39,9 +39,22 @@ export async function validCAPTCHA(
  */
 export async function isLoggedIn(): Promise<LoggedInModel | null> {
   let resp = await req.post("/users/IsLoggedIn");
-  if (resp.status === 200) {
-    return resp.data as LoggedInModel;
+  switch (resp.status) {
+    case 200:
+      return resp.data as LoggedInModel;
+    case 401: {
+      console.warn(`401: ${resp.data}`);
+    }; break;
+    default:
+      {
+        console.error(`unexpected response: ${resp.status}`);
+      }
+      break;
   }
 
   return null;
+}
+
+export async function logout() {
+  await req.post('/users/logout');
 }
