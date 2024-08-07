@@ -20,7 +20,7 @@ const router = createBrowserRouter([
 ]);
 
 async function enableMocking() {
-  return;
+  // return;
   if (import.meta.env.PROD) {
     return;
   }
