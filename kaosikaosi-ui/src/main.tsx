@@ -4,18 +4,33 @@ import Home from "./routes/home.tsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Authenticate from "./routes/authenticate.tsx";
-import ErrorPage from "./routes/error-page.tsx";
+import NotFound from "./routes/not-found.tsx";
+import Profile from "./routes/porfile.tsx";
+
+import { HomePage } from "./components/homepage/index.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    errorElement: <ErrorPage />,
-    children: [{}],
+    children: [
+      {
+        path: "",
+        element: <HomePage />,
+      },
+      {
+        path: ":username",
+        element: <Profile />,
+      },
+    ],
   },
   {
     path: "authenticate",
     element: <Authenticate />,
+  },
+  {
+    path: "notfound",
+    element: <NotFound />,
   },
 ]);
 

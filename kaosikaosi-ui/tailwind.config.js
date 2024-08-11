@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         volleyballBoys: "url('/src/assets/volleyball-boys.webp')",
-        'volleyballBoys-mobile': "url('/src/assets/volleyball-boys.jpg')",
+        'miku-hero': "url('/src/assets/miku.webp')",
       },
     },
   },

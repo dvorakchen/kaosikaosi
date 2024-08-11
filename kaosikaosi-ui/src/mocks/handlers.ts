@@ -1,5 +1,5 @@
 import { delay, http, HttpResponse } from "msw";
-import { LoggedInModel } from "~/http/models";
+import { LoggedInModel, UserProfile, UserStatus } from "~/http/models";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -24,7 +24,8 @@ export const handlers = [
         id: "548312b6-a7ec-496b-ab7c-cc4c16060882",
         name: "Dvorak",
         email: "birenchens@163.com",
-        profile: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+        profile:
+          "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
       } as LoggedInModel);
     } else {
       return HttpResponse.json("检测到账号异常，请重新登陆", {
@@ -39,5 +40,18 @@ export const handlers = [
         "Set-Cookie": "mySecret=",
       },
     });
+  }),
+
+  http.get(`${API_URL}api/users/:id/profile`, () => {
+    return HttpResponse.json({
+      id: "548312b6-a7ec-496b-ab7c-cc4c16060882",
+      name: "Dvorak",
+      email: "birenchens@163.com",
+      profile:
+        "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+      invitation: "548312b6-a7ec-496b-ab7c-cc4c16060883",
+      status: UserStatus.Activity,
+      CreateDateTime: "2024-08-08 12:25:20",
+    } as UserProfile);
   }),
 ];
