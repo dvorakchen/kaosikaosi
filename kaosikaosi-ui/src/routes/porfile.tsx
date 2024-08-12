@@ -30,9 +30,9 @@ export default function Profile() {
 
 function Main({ userProfile }: { userProfile: UserProfile }) {
   return (
-    <div className="hero bg-base-200 min-h-96">
+    <div className="hero bg-base-200 min-h-40 sm:min-h-60">
       <div className="hero-content w-9/12 flex-col md:flex-row md:justify-start md:items-end space-x-4">
-        <div className="w-48 rounded-full">
+        <div className="w-24 sm:w-36 rounded-full">
           <img
             src={userProfile.profile}
             className="w-full h-full rounded-full shadow-2xl"
