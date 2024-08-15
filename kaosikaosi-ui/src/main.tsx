@@ -45,6 +45,13 @@ async function enableMocking() {
   return worker.start();
 }
 
+document.addEventListener("drop", function (e) {
+  e.preventDefault();
+});
+document.addEventListener("dragover", function (e) {
+  e.preventDefault();
+});
+
 enableMocking().then(() => {
   ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>

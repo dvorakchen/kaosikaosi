@@ -58,16 +58,18 @@ export default function Narbar() {
       </nav>
 
       <dialog id="publishPost" className="modal items-end" ref={publishPost}>
-        <div className="modal-box w-full h-5/6 md:w-11/12 md:max-w-5xl">
-          <form method="dialog">
-            <button
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-              title="关闭"
-            >
-              ✕
-            </button>
-          </form>
-          <div className="mt-8">
+        <div
+          className="modal-box w-full h-5/6 md:w-11/12 md:max-w-5xl py-0
+          flex flex-col"
+        >
+          <div className="sticky top-0 z-10 flex flex-row-reverse h-14 items-center bg-base-100 py-4">
+            <form method="dialog">
+              <button className="btn btn-sm btn-circle btn-ghost" title="关闭">
+                ✕
+              </button>
+            </form>
+          </div>
+          <div className="flex-grow">
             <PublishPost />
           </div>
         </div>

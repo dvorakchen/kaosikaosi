@@ -1,9 +1,10 @@
 import { delay, http, HttpResponse } from "msw";
+import { isAllowedPhoto } from "~/global";
 import { LoggedInModel, UserProfile, UserStatus } from "~/http/models";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export const handlers = [
+const users = [
   http.post(`${API_URL}api/users/SendCAPTCHAFromEmail`, async () => {
     await delay(1000);
     return HttpResponse.text();
@@ -55,3 +56,31 @@ export const handlers = [
     } as UserProfile);
   }),
 ];
+
+const posts = [
+  http.post(`${API_URL}api/posts/:id`, async ({ request }) => {
+    const files = await request.formData();
+
+    let len = 0;
+    for (const file of files) {
+      try {
+        if (isAllowedPhoto(file[0]) && file[1] instanceof File) {
+          len++;
+        } else {
+          continue;
+        }
+      } catch (error) {
+        console.error(error);
+        continue;
+      }
+    }
+    if (len === 0) {
+      return HttpResponse.text("没有上传任何文件", { status: 400 });
+    }
+
+    await delay(2000);
+    return HttpResponse.json(null);
+  }),
+];
+
+export const handlers = [...users, ...posts];

@@ -41,7 +41,7 @@ const cache = new (class {
  *
  * if logged in, update the current user information, or redirect to authenticate page
  */
-export function useEnsureLoggedIn(cb: (user: LoggedInModel) => void) {
+export function useEnsureLoggedIn(cb?: (user: LoggedInModel) => void) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export function useEnsureLoggedIn(cb: (user: LoggedInModel) => void) {
         navigate("/authenticate");
       } else {
         CurrentUser.setLoggedIn(loggedInModel);
-        cb(loggedInModel);
+        cb && cb(loggedInModel);
       }
     })();
   }, []);

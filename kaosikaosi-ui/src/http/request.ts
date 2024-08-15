@@ -2,12 +2,17 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-let headers = new Headers();
-headers.append("Content-Type", "application/json");
+export const HEADER_APPLICATION_JSON = {
+  "Content-Type": "application/json",
+};
+
+export const HEADER_FORM_DATA = {
+  "Content-Type": "multipart/form-data",
+};
 
 export const req = axios.create({
   baseURL: API_URL + "api",
-  headers: { "Content-Type": "application/json" },
+  headers: HEADER_APPLICATION_JSON,
   withCredentials: true,
   validateStatus: (status) => {
     return status < 500;
